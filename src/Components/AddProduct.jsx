@@ -32,9 +32,9 @@ try {
     data.append("product_photo",product_photo);
 
 
-    let user=  JSON.parse(localStorage.getItem("user"))
+    let user =  JSON.parse(localStorage.getItem("user"));
     if(!user){
-        navigate("/signup")
+        navigate("/signin")
     }else{
         const response = await axios.post("https://123derick.pythonanywhere.com/api/addproduct",data);
         setLoading("");

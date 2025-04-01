@@ -97,4 +97,7 @@ hr:hover{
     align-items: stretch;
   }
 
+  .single-image{
+    height: 200px;
+  }
   

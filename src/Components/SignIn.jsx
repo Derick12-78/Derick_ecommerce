@@ -60,6 +60,7 @@ const togglePassword=()=>{
     }
     passwordInput.setAttribute("type",new_type);
 }
+
     
     return (  
         <div className="row justify-content-center mt-4">
@@ -78,6 +79,8 @@ const togglePassword=()=>{
                     <br />
                     <button type="submit" className="btn btn-primary">Sign in</button>
                 </form>
+
+                <input type="checkbox" /><span>BY continuing you agree to terms and conditions of using the website.</span>
                 <p className="text-muted">Don't have an account?<Link to="/signup">Sign up</Link></p>
             </div>
         </div>

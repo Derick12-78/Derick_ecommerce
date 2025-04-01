@@ -16,13 +16,13 @@ const Navbar = () => {
                     <div className="navbar-nav">
                         <Link to="/" className="nav-link">Home</Link>
                         <Link to="/addproduct" className="nav-link">Add Product</Link>
-                     
+                        <Link to ="/aboutus" className="nav-link">About Us</Link>
                     </div>
                     <div className="navbar-nav ms-auto">
                         <Link to="/signin" className="nav-link">Login</Link>
                         <Link to="/signup" className="nav-link">Register</Link>
-                        <Link to="/signin" className="nav-link">Log out</Link>
-                        <Link to ="/aboutus" className="nav-link">About Us</Link>
+                        <Link to="/signin" className="nav-link" onClick={localStorage.removeItem("user")}>Log out</Link>
+                        
                     </div>
                 
                 </div>

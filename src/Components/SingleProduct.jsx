@@ -38,7 +38,7 @@ const SingleProduct = () => {
     return (  
         <div className="row justify-content-center mt-3">
             <div className="col-md-3 card shadow">
-                <img src={img_url + product.product_photo} alt={product.product_name}/>
+                <img src={img_url + product.product_photo} alt={product.product_name} className="single-image"/>
             </div>
             <div className="col-md-3 card shadow">
                 <h3>{product.product_name}</h3>

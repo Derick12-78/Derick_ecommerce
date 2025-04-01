@@ -25,7 +25,7 @@ try {
     data.append("password",password);
     const response = await axios.post("https://123derick.pythonanywhere.com/api/signin",data);
 
-    if(response.user.data){
+    if(response.data.user){
 
        localStorage.setItem("user",JSON.stringify(response.data.user));
        navigate("/");
@@ -82,9 +82,9 @@ const togglePassword=()=>{
                     <br />
                     <button type="submit" className="btn btn-primary">Sign in</button>
                 </form>
-
-                <input type="checkbox" /><span>BY continuing you agree to terms and conditions of using the website.</span>
-                <p className="text-muted">Don't have an account?<Link to="/signup">Sign up</Link></p>
+<div className="text-start">
+                <input type="checkbox"  required/><span>By continuing you agree to terms and conditions of using the website.</span>
+                <p className="text-muted">Don't have an account?<Link to="/signup">Sign up</Link></p></div>
             </div>
         </div>
     );

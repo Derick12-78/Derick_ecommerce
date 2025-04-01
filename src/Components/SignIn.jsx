@@ -31,7 +31,10 @@ try {
        navigate("/");
 
     }else{
-        setError(error.message); 
+
+        setLoading("");
+        setError(response.data.message);
+     
     }
 } catch (error) {
     setLoading("");

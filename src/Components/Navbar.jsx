@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+   let user = localStorage.getItem("user")
     return (  
 
         <section className="row">
@@ -19,9 +20,10 @@ const Navbar = () => {
                         <Link to ="/aboutus" className="nav-link">About Us</Link>
                     </div>
                     <div className="navbar-nav ms-auto">
+                        <b>Hello {user.username}</b>
                         <Link to="/signin" className="nav-link">Login</Link>
                         <Link to="/signup" className="nav-link">Register</Link>
-                        <Link to="/signin" className="nav-link" onClick={localStorage.removeItem("user")}>Log out</Link>
+                        <Link to="/signin" className="nav-link" onClick={localStorage.clear("user")}>Log out</Link>
                         
                     </div>
                 

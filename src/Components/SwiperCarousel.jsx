@@ -34,7 +34,7 @@ swiperCarousel();
   return (
     <div>
         <section className="row">
-<Swiper modules = {[Navigation,Pagination,Autoplay]} navigation pagination = {{clickable:true}} autoplay={{delay:1000}} loop={true} slidesPerView={3} spaceBetween={20} breakpoints={{640:{slidesPerView:1},768:{slidesPerView:2},1024:{slidesPerView:3}}}>
+<Swiper modules = {[Navigation,Pagination,Autoplay]} navigation pagination = {{clickable:true}} autoplay={{delay:1000}} loop={true}  spaceBetween={20} breakpoints={{640:{slidesPerView:1},768:{slidesPerView:2},1024:{slidesPerView:3}}}>
 
       {products.map((product)=>(
         <SwiperSlide>

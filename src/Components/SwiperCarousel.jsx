@@ -41,10 +41,10 @@ swiperCarousel();
 
           <div className="carousel-inner">
         <div className="carousel-item active">
-            <img src={img_url + product.product_photo} alt=""  className="d-flex w-100  image-fluid image" swipercarousel/>
+            <img src={img_url + product.product_photo} alt=""  className="d-flex w-100  image-fluid image"  key={product.product_id}/>
 
-            <div className="carousel-caption">
-                <h2>{product.product_name}</h2>
+            <div className="carousel-caption"  >
+                <h2  key={product.product_id}>{product.product_name}</h2>
                
                 <button className="btn btn-danger"  onClick={()=> navigate("/singleproduct", {state: {product}})}>Buy now</button>
             </div>

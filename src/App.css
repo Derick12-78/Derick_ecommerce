@@ -102,6 +102,13 @@ hr:hover{
   }
 
   .active{
-    border-bottom: 30px red solid;
+    border-bottom: 5px red solid;
   }
+.navbar-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 20px;
+  align-items: center;
+}
   

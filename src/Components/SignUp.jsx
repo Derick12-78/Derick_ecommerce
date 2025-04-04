@@ -39,6 +39,26 @@ const SignUp = () => {
         }
     }
 
+const togglePassword=()=>{
+    const passwordInput = document.getElementById("password");
+    const icon = document.getElementById("icon");
+
+    let current_type = passwordInput.getAttribute("type");
+    let new_type = ""
+    if (current_type==="password")
+    {
+        new_type = "text" 
+    
+        icon.classList.remove("bi-eye-fill");
+        icon.classList.add("bi-eye-slash-fill")}
+    else{new_type = "password"
+    
+        icon.classList.add("bi-eye-fill");
+        icon.classList.remove("bi-eye-slash-fill")    
+    }
+    passwordInput.setAttribute("type",new_type);
+}
+
     return (  
         <div className="row justify-content-center mt-4">
             

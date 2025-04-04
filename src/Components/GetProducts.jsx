@@ -61,9 +61,9 @@ const GetProducts = () => {
 {filteredProducts.map((product)=>(
 
 <div className="col-md-3 justify-content-center mb-4">
-<div className="card shadow cards">
+<div className="card shadow cards"  key={product.product_id}>
     <img src={img_url + product.product_photo} alt="" className="product_img fluid mt-4" />
-    <div className="card-body">
+    <div className="card-body"  key={product.product_id}>
         <h5 className="mt-2">{product.product_name}</h5>
         <p className="text-muted">{product.product_desc.slice(0,15)}</p>
         <b className="text-warning">Ksh{product.product_cost}</b>

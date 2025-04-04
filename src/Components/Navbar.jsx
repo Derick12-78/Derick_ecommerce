@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-   let user = localStorage.getItem("user")
    let [navItem,setNavItem] = useState("")
    const handleLogout = ()=>{
     localStorage.clear("user")
@@ -13,7 +12,7 @@ const Navbar = () => {
         <section className="row">
         <div className="col-md-12">
             <div className="navbar navbar-expand-md navbar-light bg-light">
-                <Link to="/" className="navbar-brand" >Shop Online</Link>
+                <Link to="/" className="navbar-brand" onClick={()=>setNavItem("home")}>Shop Online</Link>
 
                 <button className="navbar-toggler" data-bs-target="#prada" data-bs-toggle="collapse">
                     <span className="navbar-toggler-icon"></span>
@@ -21,17 +20,17 @@ const Navbar = () => {
 
                 <div className="collapse navbar-collapse" id="prada">
                     <div className="navbar-nav">
-                        <Link to="/" className= {navItem ==="home"?"active":""} onClick={()=>setNavItem("home")}>Home</Link>
+                        <Link to="/" className = {navItem ==="home"?"active":""} onClick={()=>setNavItem("home")}>Home</Link>
                         <Link to="/addproduct" className={navItem ==="add"?"active":""} onClick={()=>setNavItem("add")}>Add Product</Link>
                         <Link to ="/aboutus" className={navItem ==="about"?"active":""} onClick={()=>setNavItem("about")}>About Us</Link>
 
-                        <Link to="/#footer" className={navItem ==="contact"?"active":""} onClick={()=>setNavItem("contact")}>Contact Us</Link>
+                      
                     </div>
                     <div className="navbar-nav ms-auto">
-                        <b>Hello {user.username}</b>
+                    
                         <Link to="/signin" className={navItem ==="login"?"active":""} onClick={()=>setNavItem("login")}>Login</Link>
                         <Link to="/signup" className={navItem ==="signup"?"active":""} onClick={()=>setNavItem("signup")}>Register</Link>
-                        <Link to="/signin" className={navItem ==="logout"?"active":""} onClick={handleLogout}>Log out</Link>
+                        <Link to="/signin" className="navbar-link" onClick={handleLogout}>Log out</Link>
                         
                     </div>
                 

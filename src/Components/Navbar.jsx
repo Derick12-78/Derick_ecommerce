@@ -19,17 +19,17 @@ const Navbar = () => {
                 </button>
 
                 <div className="collapse navbar-collapse" id="prada">
-                    <div className="navbar-nav">
-                        <Link to="/" className = {navItem ==="home"?"active":""} onClick={()=>setNavItem("home")}>Home</Link>
-                        <Link to="/addproduct" className={navItem ==="add"?"active":""} onClick={()=>setNavItem("add")}>Add Product</Link>
-                        <Link to ="/aboutus" className={navItem ==="about"?"active":""} onClick={()=>setNavItem("about")}>About Us</Link>
+                    <div className="navbar-nav justify-content-space">
+                        <Link to="/" className = {navItem ==="home"?"active":"navbar-link"} onClick={()=>setNavItem("home")}>Home</Link>
+                        <Link to="/addproduct" className={navItem ==="add"?"active":"navbar-link"} onClick={()=>setNavItem("add")}>Add Product</Link>
+                        <Link to ="/aboutus" className={navItem ==="about"?"active":"navbar-link"} onClick={()=>setNavItem("about")}>About Us</Link>
 
                       
                     </div>
                     <div className="navbar-nav ms-auto">
                     
-                        <Link to="/signin" className={navItem ==="login"?"active":""} onClick={()=>setNavItem("login")}>Login</Link>
-                        <Link to="/signup" className={navItem ==="signup"?"active":""} onClick={()=>setNavItem("signup")}>Register</Link>
+                        <Link to="/signin" className={navItem ==="login"?"active":"navbar-link"} onClick={()=>setNavItem("login")}>Login</Link>
+                        <Link to="/signup" className={navItem ==="signup"?"active":"navbar-link"} onClick={()=>setNavItem("signup")}>Register</Link>
                         <Link to="/signin" className="navbar-link" onClick={handleLogout}>Log out</Link>
                         
                     </div>

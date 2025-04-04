@@ -100,4 +100,8 @@ hr:hover{
   .single-image{
     height: 200px;
   }
+
+  .active{
+    border-bottom: 30px red solid;
+  }
   

@@ -3,19 +3,19 @@ const Footer = () => {
         <div>
         <footer >
           
-        <section class="row bg-danger text-center">
+        <section class="row bg-danger text-center" id="footer">
                 <h1 class="text-secondary">Contact Us <hr /></h1>
-
+<h2>Welcome to our e-commerce website and enjoy shopping with us.</h2>
                 <div class="col-md-12">
                     <h4 class="text-center text-light"></h4>
                     <br/>
                     <a href="http://twitter.com">
                         <img src="Images/x.png" alt=""/>
                     </a>
-                    <a href="http://instagram.com">
+                    <a href="http://instagram.com/mwalimuderick">
                         <img src="Images/in.png" alt=""/>
                     </a>
-                    <p class="text-dark">Please contact if you you want to know more about us or in case of anything.</p>
+                    <p class="text-dark">Please contact if you you want to know more about us or in case of anything. And get for information from us.</p>
 
                 </div>
                </section>

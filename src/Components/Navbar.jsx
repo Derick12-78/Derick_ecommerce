@@ -30,7 +30,7 @@ const Navbar = () => {
                     {user&&
                     <div className="navbar-nav ms-auto">
                         
-                    <h2>{user.username}</h2>
+                    <h2>Hello {user.username}</h2>
                         <Link to="/signin" className={navItem ==="logout"?"active":"navbar-link"} onClick={handleLogout}>Log out</Link>
                         
                     </div>

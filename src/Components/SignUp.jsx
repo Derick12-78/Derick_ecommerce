@@ -75,7 +75,10 @@ const togglePassword=()=>{
                 <br />
                 <input type="tel" className="form-control" required placeholder="Enter your phone No." value={phone} onChange={(e)=>setPhone(e.target.value)}/>
                 <br />
-                <input type="password" className="form-control" required placeholder="Enter your password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
+                <div className="input-group">
+<input type="password" required className="form-control" id="password" placeholder="Enter password" onChange={(e)=>setPassword(e.target.value)} />
+<span className="input-group-text" onClick={togglePassword}><i id="icon"class="bi bi-eye-fill"></i></span>
+</div>
                 <br />
                 <button  type ="submit" className="btn btn-primary">Sign Up</button>
             </form>

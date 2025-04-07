@@ -30,6 +30,7 @@ const SingleProduct = () => {
         
         setSuccess(response.data.message);
         setPhone("")
+        setSuccess("")
     } catch (error) {
         setLoading("");
         setError(error.message);

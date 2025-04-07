@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
    let [navItem,setNavItem] = useState("")
+   const user = JSON.parse(localStorage.getItem("user"))
    const handleLogout = ()=>{
     localStorage.clear("user")
     setNavItem("logout")
@@ -26,14 +27,25 @@ const Navbar = () => {
 
                       
                     </div>
+                    {user&&
                     <div className="navbar-nav ms-auto">
-                    
-                        <Link to="/signin" className={navItem ==="login"?"active":"navbar-link"} onClick={()=>setNavItem("login")}>Login</Link>
-                        <Link to="/signup" className={navItem ==="signup"?"active":"navbar-link"} onClick={()=>setNavItem("signup")}>Register</Link>
-                        <Link to="/signin" className="navbar-link" onClick={handleLogout}>Log out</Link>
+                        
+                    <h2>{user.username}</h2>
+                        <Link to="/signin" className={navItem ==="signup"?"active":"navbar-link"} onClick={handleLogout}>Log out</Link>
                         
                     </div>
-                
+                }
+
+                    {!user&&
+                    <div className="navbar-nav ms-auto">
+                        
+                  
+                        <Link to="/signin" className={navItem ==="login"?"active":"navbar-link"} onClick={()=>setNavItem("login")}>Login</Link>
+                        <Link to="/signup" className={navItem ==="signup"?"active":"navbar-link"} onClick={()=>setNavItem("signup")}>Register</Link>
+                   
+                        
+                    </div>
+                }
                 </div>
             </div>
         </div>

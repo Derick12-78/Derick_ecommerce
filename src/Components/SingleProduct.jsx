@@ -1,7 +1,6 @@
 import axios from "axios";
-import { Alert } from "bootstrap/dist/js/bootstrap.min";
 import { useState } from "react";
-import { useLocation,Link } from "react-router-dom";
+import { useLocation,Link, useNavigate } from "react-router-dom";
 
 const SingleProduct = () => {
     const img_url = "https://123derick.pythonanywhere.com/static/images/"
@@ -11,31 +10,39 @@ const SingleProduct = () => {
     let [loading,setLoading] = useState("");
     let [error,setError] = useState("");
     let [success,setSuccess] = useState("");
-
+    let user =JSON.parse(localStorage.getItem("user"))
+    let navigate = useNavigate()
 
     const submitForm =async (e)=>{
         e.preventDefault();
 
         setError("");
         setLoading("Please wait... processing payment...");
+        if(!user){
+            navigate("/signin")
+            alert("You must signin first.")
+        }else{
 
-    try {
-        const data = new FormData();
-        data.append("amount", product.product_cost);
-        data.append("phone",phone);
-
-        const  response = await axios.post("https://123derick.pythonanywhere.com/api/mpesa_payment",data);
-
-        setLoading("");
+            try {
+                const data = new FormData();
+                data.append("amount", product.product_cost);
+                data.append("phone",phone);
         
-        setSuccess(response.data.message);
-        setPhone("")
-        setSuccess("")
-    } catch (error) {
-        setLoading("");
-        setError(error.message);
-    }
-    };
+                const  response = await axios.post("https://123derick.pythonanywhere.com/api/mpesa_payment",data);
+        
+                setLoading("");
+                
+                setSuccess(response.data.message);
+                setPhone("")
+             
+            } catch (error) {
+                setLoading("");
+                setSuccess("")
+                setError(error.message);
+            }
+            };
+        }
+
     return (  
         <div className="row justify-content-center mt-3">
             <div className="col-md-3 card shadow">

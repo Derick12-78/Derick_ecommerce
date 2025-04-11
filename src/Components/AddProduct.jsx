@@ -11,11 +11,17 @@ const AddProduct = () => {
     let [loading,setLoading] = useState("");
     let [error,setError] = useState("");
     let [success,setSuccess] = useState("");
+    let user = JSON.parse(localStorage.getItem("user"))
     
     let navigate = useNavigate();
 
     const submitForm = async(e)=>{
 e.preventDefault();
+
+if(!user){
+    navigate("/signin")
+    alert("You must login first.")
+}else{
 
 try {
     if (fileInputRef.current){
@@ -31,11 +37,9 @@ try {
     data.append("product_cost",product_cost);
     data.append("product_photo",product_photo);
 
-
-    let user =  JSON.parse(localStorage.getItem("user"));
-    if(!user){
-        navigate("/signin")
-    }else{
+    
+       
+    
         const response = await axios.post("https://123derick.pythonanywhere.com/api/addproduct",data);
         setLoading("");
         setSuccess(response.data.success);
@@ -43,7 +47,7 @@ try {
         setProductDesc("");
         setProductCost("");
         setSuccess("");
-    };
+    
 
 
     
@@ -52,6 +56,8 @@ try {
     setError(error.message);
     
 }
+}
+
     }
     return (  
         <div className="row justify-content-center mt-4">

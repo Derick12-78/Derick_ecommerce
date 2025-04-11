@@ -24,7 +24,7 @@ const Navbar = () => {
                         <Link to="/" className = {navItem ==="home"?"active":"navbar-link"} onClick={()=>setNavItem("home")}>Home</Link>
                         <Link to="/addproduct" className={navItem ==="add"?"active":"navbar-link"} onClick={()=>setNavItem("add")}>Add Product</Link>
                         <Link to ="/aboutus" className={navItem ==="about"?"active":"navbar-link"} onClick={()=>setNavItem("about")}>About Us</Link>
-
+                        
                       
                     </div>
                     {user&&

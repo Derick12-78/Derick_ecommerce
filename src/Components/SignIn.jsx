@@ -81,9 +81,12 @@ const togglePassword=()=>{
 </div>
                     <br />
                     <button type="submit" className="btn btn-primary">Sign in</button>
+                    <div>          
+                        <input type="checkbox"  required/><span>By continuing you agree to terms and conditions of using the website.</span>
+                    </div>
                 </form>
 <div className="text-start">
-                <input type="checkbox"  required/><span>By continuing you agree to terms and conditions of using the website.</span>
+
                 <p className="text-muted">Don't have an account?<Link to="/signup">Sign up</Link></p></div>
             </div>
         </div>

@@ -23,8 +23,8 @@ function App() {
        
      
 
-    <div className="App">
-      <header className="App-header">
+    <div className = "App">
+      <header className = "App-header">
         SHOP ONLINE
       </header>
     

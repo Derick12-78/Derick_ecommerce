@@ -33,6 +33,9 @@ const SingleProduct = () => {
                 setLoading("");
                 
                 setSuccess(response.data.message);
+                setTimeout(()=>{
+                    setSuccess("")
+                },3000)
                 setPhone("")
              
             } catch (error) {
@@ -61,7 +64,7 @@ const SingleProduct = () => {
                     <br />
                     <input type="tel" required onChange={(e)=>setPhone(e.target.value)} className="form-control" value={phone} placeholder="Enter phone No 254xxxxxxxxxxx"/>
                     <br />
-                    <button className="btn btn-primary"  >Pay Now</button>
+                    <button className="btn btn-primary" >Pay Now</button>
                 </form>
             </div>
         </div>

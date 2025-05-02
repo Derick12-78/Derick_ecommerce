@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
 
 const SignUp = () => {
     let [username,setUsername] = useState("");
@@ -26,7 +25,9 @@ const SignUp = () => {
             setError("");
             setLoading("");
             setSuccess(response.data.success)
-
+            setTimeout(()=>{
+                setSuccess("")
+            },3000)
             setUsername("");
             setEmail("");
             setPhone("");
@@ -62,7 +63,7 @@ const togglePassword=()=>{
     return (  
         <div className="row justify-content-center mt-4">
             
-        <div className="col-md-6 card shadow p-4 sign bg-muted">
+        <div className="col-md-6 card shadow p-4 sign bg-warning">
             <h2>Sign Up <hr /></h2>
             <hr />
             <b className="text-warning">{loading}</b>
@@ -76,7 +77,7 @@ const togglePassword=()=>{
                 <input type="tel" className="form-control" required placeholder="Enter your phone No." value={phone} onChange={(e)=>setPhone(e.target.value)}/>
                 <br />
                 <div className="input-group">
-<input type="password" required className="form-control" id="password" placeholder="Enter password" onChange={(e)=>setPassword(e.target.value)} />
+<input type="password" required className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value)} />
 <span className="input-group-text" onClick={togglePassword}><i id="icon"class="bi bi-eye-fill"></i></span>
 </div>
                 <br />

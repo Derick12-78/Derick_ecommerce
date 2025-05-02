@@ -46,8 +46,9 @@ try {
         setProductName("");
         setProductDesc("");
         setProductCost("");
-        setSuccess("");
-    
+        setTimeout(()=>{
+            setSuccess("")
+        },3000)
 
 
     

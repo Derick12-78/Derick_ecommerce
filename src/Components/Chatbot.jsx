@@ -95,7 +95,7 @@ const Chatbot = () => {
 
   return (
     <div style={{ width: '100%', margin: '0 auto', padding: '2px', backgroundColor: '#f9f9f9', borderRadius: '10px' }}>
-      <div style={{ height: '300px', overflowY: 'scroll', marginBottom: '10px', padding: '10px', backgroundColor: '#fff', borderRadius: '5px' }}>
+      <div style={{  overflowY: 'scroll', marginBottom: '10px', padding: '10px', backgroundColor: '#fff', borderRadius: '5px' }}>
         {messages.map((msg, index) => (
           <div key={index} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
             <p><strong>{msg.sender}:</strong> {msg.text}</p>

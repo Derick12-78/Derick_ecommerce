@@ -1,4 +1,5 @@
 import React from 'react'
+import Chatbot from './Chatbot'
 
 const AboutUs = () => {
   return (
@@ -20,8 +21,13 @@ const AboutUs = () => {
         </div>
         <div className="col-md-6 text-center text-dark">
           <h3 className="display-4 text-center text-secondary ">OUR MISSION</h3>
-          <p>To ensure buying and selling of products online</p>
+          <p>To ensure buying and selling of products online thus saving on time and travelling costs.</p>
         </div>
+        <div className="card ">
+          <h2 className="text-center text-dark">Chatbot</h2>
+        <Chatbot/>
+        </div>
+        
       </section>
     </div>
   )

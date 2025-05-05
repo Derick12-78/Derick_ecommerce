@@ -39,7 +39,7 @@ const pairs = [
     ]
   },
   {
-    regex: /(.*)(delivery)(.*)/i,
+    regex: /(.*)(delivery|delivered)(.*)/i,
     responses: [
       'On payment, our products are delivered directly to your home. What you need to do is provide us with the location of your home.'
     ]

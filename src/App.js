@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './Components/SignUp';
@@ -10,38 +9,54 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import SingleProduct from './Components/SingleProduct';
-import SwiperCarousel from './Components/SwiperCarousel';
 import AboutUs from './Components/AboutUs';
 import "bootstrap-icons/font/bootstrap-icons.min.css"
+import Sidebar from './Components/Sidebar';
+import { useState } from 'react';
+
 
 
 
 function App() {
+
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
+  // Toggle sidebar visibility
+  const toggleSidebar = () => {
+    setIsSidebarVisible(prevState => !prevState);
+  };
   return (
     <Router>
-       <Navbar/>
-       
-     
+      {/* Navbar with dropdown */}
+      <Navbar toggleSidebar={toggleSidebar} />
 
+{/* Sidebar */}
+{isSidebarVisible && <Sidebar />}
+
+{/* Main content area */}
+       
+    
     <div className = "App">
       <header className = "App-header">
         SHOP ONLINE
       </header>
-    
- 
     </div>
-    <Routes>
+    
+    <div style={{ marginLeft: isSidebarVisible ? '250px' : '0', transition: 'margin-left 0.3s' }}>
+        <Routes>
       <Route path ="/signup" element={<SignUp/>}/>
       <Route path='/signin' element = {<SignIn/>}/>
-      <Route path='/' element = {<GetProducts/>}/>
+      <Route path='/' element = {<GetProducts />}/>
       <Route path='/addproduct' element = {<AddProduct/>}/>
       <Route path='/singleproduct' element = {<SingleProduct/>}/>
       <Route path='/aboutus' element = {<AboutUs/>}/>
+        </Routes>
+      </div>
 
    
       
-    </Routes>
-<Footer/>
+  
+    <Footer/>
     </Router>
   );
 }

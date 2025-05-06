@@ -8,6 +8,7 @@ const AddProduct = () => {
     let [product_cost,setProductCost] = useState("");
     const fileInputRef = useRef(null);
     let [product_photo,setProductPhoto] = useState("");
+    let [product_category,setProductCategory] = useState("");
     let [loading,setLoading] = useState("");
     let [error,setError] = useState("");
     let [success,setSuccess] = useState("");
@@ -36,6 +37,7 @@ try {
     data.append("product_desc",product_desc);
     data.append("product_cost",product_cost);
     data.append("product_photo",product_photo);
+    data.append("product_category",product_category)
 
     
        
@@ -46,6 +48,7 @@ try {
         setProductName("");
         setProductDesc("");
         setProductCost("");
+        setProductCategory("");
         setTimeout(()=>{
             setSuccess("")
         },3000)
@@ -75,7 +78,13 @@ try {
                     <input type="number" className="form-control" required  placeholder="Product cost" onChange={(e)=>setProductCost(e.target.value)} value = {product_cost}/><br />
                     <label htmlFor="">Product Photo</label>
                     <input type="file" className="form-control" required onChange={(e)=>setProductPhoto(e.target.files[0])} ref={fileInputRef}/>
+                    <br/>
+                    <select required className="form-control"  onChange={(e)=>setProductCategory(e.target.value)} value = {product_category}>
+                        <option>Furnitures</option>
+                        <option>Electricals</option>
+                    </select>
                     <br />
+
                     <button className="btn btn-primary button">Add Product</button>
                 </form>
             </div>

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SwiperCarousel from "./SwiperCarousel";
 
-const GetProducts = () => {
 
+const GetProducts = (toggleSidebar) => {
 
     let [products,setProducts] = useState([]);
     let [loading,setLoading] = useState("");
@@ -47,9 +47,12 @@ const GetProducts = () => {
     return ( 
         
         <div className="row justify-content-center">
-            
+        
            <SwiperCarousel/>
+           <div> 
             <h4 className="display-2 text-center">Available Products <hr /></h4>
+            </div>
+ 
     
 <b className="text-warning">{loading}</b>
 <b className="text-danger">{error}</b>

@@ -8,7 +8,6 @@ let [username,setUsername] = useState();
 let [password,setPassword] = useState();
 let [loading,setLoading] = useState();
 let [error,setError] = useState("");
-let [success,setSuccess] = useState("");
 let navigate = useNavigate();
 
 
@@ -18,7 +17,6 @@ e.preventDefault()
 
 try {
     setError("");
-    setSuccess("");
     setLoading("Please wait...")
     const data = new FormData();
     data.append("username",username);
@@ -38,7 +36,6 @@ try {
     }
 } catch (error) {
     setLoading("");
-    setSuccess("");
     setError(error.message);
 }
 

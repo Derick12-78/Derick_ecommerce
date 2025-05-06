@@ -66,12 +66,32 @@ const Chatbot = () => {
     { sender: 'bot', text: 'Hello! How can I assist you today?' }
   ]);
   const [input, setInput] = useState('');
+  const formatTime = () => {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
 
+    // Determine AM or PM
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    // Convert 24-hour format to 12-hour format
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    // Format the time
+    return `${hours}:${minutes}:${seconds} ${ampm}`;
+  };
   const handleSend = () => {
     if (!input.trim()) return;
 
     // User's message
-    const userMessage = { sender: 'user', text: input };
+
+    const timeSent = formatTime();
+    const userMessage = { sender: 'user', text: input ,time:timeSent};
+
     setMessages([...messages, userMessage]);
     setInput('');
 
@@ -79,7 +99,7 @@ const Chatbot = () => {
     const botReply = getBotResponse(input);
 
     // Add bot's reply
-    setMessages(prevMessages => [...prevMessages, { sender: 'bot', text: botReply }]);
+    setMessages(prevMessages => [...prevMessages, { sender: 'bot', text: botReply ,time:timeSent}]);
   };
 
   // Match input with patterns
@@ -98,7 +118,7 @@ const Chatbot = () => {
       <div style={{  overflowY: 'scroll', marginBottom: '10px', padding: '10px', backgroundColor: '#fff', borderRadius: '5px' }}>
         {messages.map((msg, index) => (
           <div key={index} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
-            <p><strong>{msg.sender}:</strong> {msg.text}</p>
+            <p><strong>{msg.sender}:</strong> {msg.text}{msg.time}</p>
           </div>
         ))}
       </div>

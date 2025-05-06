@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
-   let [navItem,setNavItem] = useState("")
+const Navbar = ({ toggleSidebar }) => {
+   let [navItem,setNavItem] = useState("");
    const user = JSON.parse(localStorage.getItem("user"))
    const handleLogout = ()=>{
     localStorage.clear("user")
@@ -13,6 +13,7 @@ const Navbar = () => {
         <section className="row">
         <div className="col-md-12">
             <div className="navbar navbar-expand-md navbar-light bg-light">
+            <img src="images/menu_dropdown_setting_button-64.webp"  onClick={toggleSidebar} alt="" />
                 <Link to="/" className="navbar-brand" onClick={()=>setNavItem("home")}>Shop Online</Link>
 
                 <button className="navbar-toggler" data-bs-target="#prada" data-bs-toggle="collapse">

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import generateStrongPassword from '../utils/passwordGenerator';
+
 
 const SignUp = () => {
     let [username,setUsername] = useState("");
@@ -10,6 +12,15 @@ const SignUp = () => {
     let [loading,setLoading] = useState("");
     let [error,setError] = useState("");
     let [success,setSuccess] = useState("");
+
+  const handleGeneratePassword = () => {
+    if (!username) {
+      alert('Enter username before generating password');
+      return;
+    }
+    const generated = generateStrongPassword(username);
+    setPassword(generated);
+  };
 
     const submitForm = async(e)=>{
         e.preventDefault();
@@ -77,10 +88,15 @@ const togglePassword=()=>{
                 <input type="tel" className="form-control" required placeholder="Enter your phone No." value={phone} onChange={(e)=>setPhone(e.target.value)}/>
                 <br />
                 <div className="input-group">
+                  
 <input type="password" required className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value)} />
 <span className="input-group-text" onClick={togglePassword}><i id="icon"class="bi bi-eye-fill"></i></span>
 </div>
                 <br />
+
+        <button type="button" onClick={handleGeneratePassword} className="btn btn-dark text-light m-3">
+          Generate Strong Password
+        </button>
                 <button  type ="submit" className="btn btn-primary">Sign Up</button>
             </form>
             <p>Already have an account?<Link to="/signin">Sign in</Link></p>

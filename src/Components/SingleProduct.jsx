@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useLocation,Link, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SingleProduct = () => {
     const img_url = "https://123derick.pythonanywhere.com/static/images/"

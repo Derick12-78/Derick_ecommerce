@@ -115,7 +115,7 @@ const Chatbot = () => {
 
   return (
     <div style={{ width: '100%', margin: '0 auto', padding: '2px', backgroundColor: '#f9f9f9', borderRadius: '10px' }}>
-      <div style={{  overflowY: 'scroll', marginBottom: '10px', padding: '10px', backgroundColor: '#fff', borderRadius: '5px' }}>
+      <div style={{  marginBottom: '10px', padding: '10px', backgroundColor: '#fff', borderRadius: '5px' }}>
         {messages.map((msg, index) => (
           <div key={index} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
             <p><strong>{msg.sender}:</strong> {msg.text}{msg.time}</p>
@@ -128,10 +128,10 @@ const Chatbot = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-          style={{  padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+          style={{  padding: '10px', borderRadius: '5px', border: '1px solid #ccc' ,height:"50px",width:"90%"}}
           placeholder="Type a message..."
         />
-        <img src='images/multimedia-42-64.webp' alt='' onClick={handleSend} style={{borderRadius:"10px", padding: '10px', backgroundColor: '#007BFF', color: '#fff', border: 'none' }}/>
+        <img src='images/multimedia-42-64.webp' alt='' onClick={handleSend} style={{ padding: '10px',  color: '#fff', border: 'none',height:"50px",marginRight:"10px" ,marginLeft:"10px" ,borderRadius:"20px",backgroundColor:"grey"}}/>
          
     
       </div>

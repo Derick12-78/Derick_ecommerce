@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SwiperCarousel from "./SwiperCarousel";
 
 
-const GetProducts = (toggleSidebar) => {
+const GetProducts = ({toggleSidebar,updateQuantity}) => {
 
     let [products,setProducts] = useState([]);
     let [loading,setLoading] = useState("");
@@ -17,7 +17,7 @@ const GetProducts = (toggleSidebar) => {
     const getProducts=async ()=>{
 
         try {
-            setLoading("Please wait ..Receiving the available products...");
+            setLoading("Please wait ...Receiving the available products...");
         const response = await axios.get("https://123derick.pythonanywhere.com/api/getproducts");
     
 
@@ -42,7 +42,7 @@ const GetProducts = (toggleSidebar) => {
     useEffect(()=>{
         getProducts();
     },[]);
-    
+
 
     return ( 
         
@@ -50,6 +50,7 @@ const GetProducts = (toggleSidebar) => {
         
            <SwiperCarousel/>
            <div> 
+
             <h4 className="display-2 text-center">Available Products <hr /></h4>
             </div>
  
@@ -71,7 +72,9 @@ const GetProducts = (toggleSidebar) => {
         <h5 className="mt-2">{product.product_name}</h5>
         <p className="text-muted">{product.product_desc.slice(0,15)}</p>
         <b className="text-warning">Ksh{product.product_cost}</b>
-        <button className="btn btn-dark w-100" onClick={()=> navigate("/singleproduct", {state: {product}})}>View product</button>
+        <button className="btn btn-dark w-100 mb-4" onClick={()=> navigate("/singleproduct", {state: {product}})}>View product</button>
+        <br />
+        <button className="btn btn-dark w-100" onClick={updateQuantity}>Add to Cart</button>
     </div>
 </div>
 </div>

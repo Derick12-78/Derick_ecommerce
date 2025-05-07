@@ -13,6 +13,7 @@ import AboutUs from './Components/AboutUs';
 import "bootstrap-icons/font/bootstrap-icons.min.css"
 import Sidebar from './Components/Sidebar';
 import { useState } from 'react';
+import Cart from './Components/Cart';
 
 
 
@@ -50,6 +51,7 @@ function App() {
       <Route path='/addproduct' element = {<AddProduct/>}/>
       <Route path='/singleproduct' element = {<SingleProduct/>}/>
       <Route path='/aboutus' element = {<AboutUs/>}/>
+      <Route path='/cart' element = {<Cart />}/>
         </Routes>
       </div>
 

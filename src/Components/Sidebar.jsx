@@ -4,11 +4,18 @@ function Sidebar() {
   return (
     <div style={styles.sidebar}>
 
-      <h2 style={styles.sidebarTitle}>Sidebar</h2>
+      <h2 style={styles.sidebarTitle}>Categories</h2>
       <ul style={styles.sidebarList}>
-        <li style={styles.sidebarItem}>Home</li>
-        <li style={styles.sidebarItem}>About</li>
+        <li style={styles.sidebarItem}>Electricals</li>
+        <li style={styles.sidebarItem}>Furnitures</li>
       </ul>
+
+      <h2 style={styles.sidebarTitle}>Prices</h2>
+      <ul style={styles.sidebarList}>
+        <li style={styles.sidebarItem}></li>
+        <li style={styles.sidebarItem}></li>
+      </ul>
+
     </div>
   );
 }
@@ -16,8 +23,8 @@ function Sidebar() {
 const styles = {
   sidebar: {
     position: 'fixed',
-    top: 80,
     left: 0,
+    end: 0,
     height: '100%',
     width: '250px',
     backgroundColor: '#111',

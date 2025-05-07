@@ -49,12 +49,13 @@ const handleReadAloud = () => {
 };
   return (
     <div>
-      <h2 className='display-1 text-center text-dark'>ABOUT US</h2>
-      <div>
+      <h2 className='display-4 text-center text-dark'>ABOUT US</h2>
+      <div className='card shadow' style={{ marginBottom: '20px' }}>
         <p className='bg-light text-muted'>
           {aboutUsText}
         </p>
           {/* Voice Selection */}
+          <hr />
       <div style={{ marginBottom: '20px' }}>
         <label htmlFor="voiceSelect">Choose a voice: </label>
         <select
@@ -68,26 +69,20 @@ const handleReadAloud = () => {
             </option>
           ))}
         </select>
-      </div>
 
-      {/* Button to trigger text-to-speech */}
+           {/* Button to trigger text-to-speech */}
       <button className="btn btn-dark text-light m-3"
         onClick={handleReadAloud}
         style={{ padding: '10px 20px', fontSize: '16px', marginTop: '20px' }}
       >Read aloud</button>
       </div>
 
-      <section className="row">
-        <div className="col-md-6 text-center text-dark">
-        <h3 className="display-4 text-center text-secondary ">OUR VISSION</h3>
-        <p>To provide quality products for sell online ensuring efficiency and saving on time and also cost</p>
+      </div>
 
-        </div>
-        <div className="col-md-6 text-center text-dark">
-          <h3 className="display-4 text-center text-secondary ">OUR MISSION</h3>
-          <p>To ensure buying and selling of products online thus saving on time and travelling costs.</p>
-        </div>
-        <div className="card ">
+   
+      <section className="row" style={{ marginBottom: '20px' ,display:"flex",justifyItems:"stretch"}}>
+   
+        <div className="card m-1 shadow justify-content-center">
           <h2 className="text-center text-dark">Chatbot</h2>
         <Chatbot/>
         </div>

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ toggleSidebar }) => {
+const Navbar = () => {
    let [navItem,setNavItem] = useState("");
    const user = JSON.parse(localStorage.getItem("user"))
+   const cart = JSON.parse(localStorage.getItem("cartItems"))
+   
+  
    const handleLogout = ()=>{
-    localStorage.clear("user")
+    localStorage.removeItem("user")
     setNavItem("logout")
    }
     return (  
@@ -13,7 +16,6 @@ const Navbar = ({ toggleSidebar }) => {
         <section className="row">
         <div className="col-md-12">
             <div className="navbar navbar-expand-md navbar-light bg-light">
-            <img src="images/menu_dropdown_setting_button-64.webp"  onClick={toggleSidebar} alt="" />
                 <Link to="/" className="navbar-brand" onClick={()=>setNavItem("home")}>Shop Online</Link>
 
                 <button className="navbar-toggler" data-bs-target="#prada" data-bs-toggle="collapse">
@@ -25,7 +27,12 @@ const Navbar = ({ toggleSidebar }) => {
                         <Link to="/" className = {navItem ==="home"?"active":"navbar-link"} onClick={()=>setNavItem("home")}>Home</Link>
                         <Link to="/addproduct" className={navItem ==="add"?"active":"navbar-link"} onClick={()=>setNavItem("add")}>Add Product</Link>
                         <Link to ="/aboutus" className={navItem ==="about"?"active":"navbar-link"} onClick={()=>setNavItem("about")}>About Us</Link>
+                        <div
+                        className="cartCount">
+                        {cart >0 ?<span className="bg-danger text-center text-light cart">{cart}</span>:""}
                         <Link to="/cart" className = {navItem ==="cart"?"active":"navbar-link"} onClick={()=>setNavItem("cart")}>Cart</Link>
+                        
+                        </div>
 
                     </div>
                     {user&&

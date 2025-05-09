@@ -10,8 +10,15 @@ const GetProducts = ({toggleSidebar,updateQuantity}) => {
     let [loading,setLoading] = useState("");
     let [error,setError] = useState("");
     let [filteredProducts,setFilteredProducts]= useState([]);
-
+    const [cart, setCartState] = useState(() => {
+        return JSON.parse(localStorage.getItem("cart")) || [];
+      });
     const img_url = "https://123derick.pythonanywhere.com/static/images/"
+
+  const setCart = (newCart) => {
+    setCartState(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
     const navigate = useNavigate();
 
     const getProducts=async ()=>{
@@ -43,6 +50,35 @@ const GetProducts = ({toggleSidebar,updateQuantity}) => {
         getProducts();
     },[]);
 
+    useEffect(() => {
+
+        getProducts();
+        const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+        setCart(savedCart);
+      }, []);
+    
+      useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }, [cart]);
+    
+    
+      const addToCart = (product) => {
+        const exists = cart.find(p => p.product_id === product.product_id);
+        if (exists) {
+          setCart(cart.map(p =>
+            p.product_id === product.product_id
+              ? { ...p, quantity: p.quantity + 1 }
+              : p
+          ));
+          alert("Product added to cart successfully")
+        } else {
+          setCart([...cart, { ...product, quantity: 1 }]);
+
+          alert("Product added to cart successfully")
+        }
+      };
+        
+    
 
     return ( 
         
@@ -70,11 +106,12 @@ const GetProducts = ({toggleSidebar,updateQuantity}) => {
     <img src={img_url + product.product_photo} alt="" className="image fluid mt-4" />
     <div className="card-body"  key={product.product_id}>
         <h5 className="mt-2">{product.product_name}</h5>
-        <p className="text-muted">{product.product_desc.slice(0,15)}</p>
+        <p className="text-muted">{product.product_desc.slice(0,20)}</p>
         <b className="text-warning">Ksh{product.product_cost}</b>
         <button className="btn btn-dark w-100 mb-4" onClick={()=> navigate("/singleproduct", {state: {product}})}>View product</button>
-        <br />
-        <button className="btn btn-dark w-100" onClick={updateQuantity}>Add to Cart</button>
+        <br /> 
+        <button className="btn btn-primary w-100 mt-2" onClick={() => addToCart(product)}>
+                            🛒 Add to Cart  </button>
     </div>
 </div>
 </div>

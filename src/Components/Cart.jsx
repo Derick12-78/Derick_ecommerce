@@ -1,9 +1,15 @@
 
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const navigate = useNavigate();
+
+  let [loading,setLoading] = useState("");
+  let [error,setError] = useState("");
+  let [success,setSuccess] = useState("");
+  let user =JSON.parse(localStorage.getItem("user"));
   const [cart, setCartState] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
   });
@@ -35,11 +41,30 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
-  const removeFromCart = (productIdToRemove) => {
-    const updatedCart = cart.filter(item => item.product_id !== productIdToRemove);
-    setCart(updatedCart);
-  };
+  const totalItems = cart.reduce((total, product) => total + product.quantity, 0);
+  localStorage.setItem("cartItems",JSON.stringify(totalItems));
 
+  const removeFromCart = (productId) => {
+    // Count how many items have the same ID
+    const sameIdItems = cart.filter((item) => item.product_id  === productId);
+   
+    if (sameIdItems.length > 1) {
+      // More than one item with same ID — remove only the first one
+      let removed = false;
+      const updatedCart = cart.filter((item) => {
+        if (item.product_id  === productId && !removed) {
+          removed = true;
+          return false; // Skip the first match
+        }
+        return true;
+      });
+  
+      setCart(updatedCart);
+    } else {
+      // Only one item with that ID — remove it entirely
+      setCart(cart.filter((item) => item.product_id !== productId));
+    }
+  };
   const updateQuantity = (productId, newQuantity) => {
     const updatedCart = cart.map(item =>
       item.product_id === productId
@@ -63,36 +88,31 @@ const Cart = () => {
       alert("Cart is empty or total is invalid.");
       return;
     }
+    if(!user){
+      navigate("/signin")
+      alert("You must signin first.")
+  }else{
+  try {
+    const data = new FormData();
+    data.append("amount", cartTotal);
+    data.append("phone",normalizedPhone);
 
-    try {
-      const response = await fetch("https://your-backend.com/api/mpesa/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          phone: normalizedPhone,
-          amount: cartTotal,
-        }),
-      });
+    const  response = await axios.post("https://123derick.pythonanywhere.com/api/mpesa_payment",data);
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert("M-Pesa prompt sent. Please complete the payment.");
-        setCart([]);
-        setCartTotal(0);
-        setPhoneNumber("");
-        navigate("/order-success");
-      } else {
-        alert(`Payment failed: ${data.message || "Unknown error"}`);
-      }
-    } catch (error) {
-      console.error("M-Pesa Checkout Error:", error);
-      alert("Error connecting to M-Pesa server.");
-    }
-  };
-
+    setLoading("");
+    
+    setSuccess(response.data.message);
+    setTimeout(()=>{
+        setSuccess("");
+    },3000);
+    setPhoneNumber("");
+ 
+} catch (error) {
+    setLoading("");
+    setSuccess("")
+    setError(error.message);
+}}
+  }
   return (
     <div className="container mt-4">
       <h3 className="text-success">🛒 Your Cart</h3>
@@ -147,6 +167,9 @@ const Cart = () => {
         <>
           <div className="mt-4">
             <h4>Total: Ksh {cartTotal.toFixed(2)}</h4>
+            <b className="text-warning">{loading}</b>
+                <b className="text-danger">{error}</b>
+                <b className="text-success">{success}</b>
             <input
               type="tel"
               placeholder="Enter M-Pesa phone number"
@@ -154,9 +177,12 @@ const Cart = () => {
               onChange={(e) => setPhoneNumber(e.target.value)}
               className="form-control my-2"
             />
-            <button className="btn btn-success w-100" onClick={handleMpesaCheckout}>
+            <div className="justify-content-center">
+            <button className="btn btn-primary w-100 " onClick={handleMpesaCheckout}>
               Pay with M-Pesa
             </button>
+            </div>
+            
           </div>
         </>
       )}

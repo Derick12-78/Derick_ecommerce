@@ -9,6 +9,7 @@ const SignUp = () => {
     let [email,setEmail] = useState("");
     let [phone,setPhone] = useState("");
     let [password,setPassword] = useState("");
+    const [strength, setStrength] = useState('');
     let [loading,setLoading] = useState("");
     let [error,setError] = useState("");
     let [success,setSuccess] = useState("");
@@ -20,8 +21,15 @@ const SignUp = () => {
     }
     const generated = generateStrongPassword(username);
     setPassword(generated);
+    updatePassword(generated);
   };
 
+    // Central update handler
+    const updatePassword = (newPassword) => {
+        setPassword(newPassword);
+        setStrength(evaluateStrength(newPassword));
+      };
+    
     const submitForm = async(e)=>{
         e.preventDefault();
         try {
@@ -43,7 +51,7 @@ const SignUp = () => {
             setEmail("");
             setPhone("");
             setPassword("");
-            
+            setStrength("");
         } catch (error) {
             setLoading("");
            alert(error.message);
@@ -51,6 +59,36 @@ const SignUp = () => {
         }
     }
 
+    const evaluateStrength = (pwd) => {
+      let score = 0;
+  
+      if (pwd.length >= 8) score++;
+      if (/[A-Z]/.test(pwd)) score++;
+      if (/[0-9]/.test(pwd)) score++;
+      if (/[^A-Za-z0-9]/.test(pwd)) score++;
+  
+      switch (score) {
+        case 0:
+        case 1:
+          return 'Weak';
+        case 2:
+          return 'Moderate';
+        case 3:
+        case 4:
+          return 'Strong';
+        default:
+          return '';
+      }
+    };
+
+  const handleChange = (e) => {
+    const val = e.target.value;
+    updatePassword(e.target.value);
+    setPassword(val);
+    setStrength(evaluateStrength(val));
+    setPassword('');
+    
+  };
 const togglePassword=()=>{
     const passwordInput = document.getElementById("password");
     const icon = document.getElementById("icon");
@@ -89,11 +127,13 @@ const togglePassword=()=>{
                 <br />
                 <div className="input-group">
                   
-<input type="password" required className="form-control" id="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+<input type="password" required className="form-control" id="password" placeholder="Enter password" value={password} onChange={handleChange} />
 <span className="input-group-text" onClick={togglePassword}><i id="icon"class="bi bi-eye-fill"></i></span>
 </div>
                 <br />
-
+                <p>
+        Strength: <strong>{strength}</strong>
+      </p>
         <button type="button" onClick={handleGeneratePassword} className="btn btn-dark text-light m-3">
           Generate Strong Password
         </button>

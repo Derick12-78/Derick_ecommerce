@@ -11,8 +11,6 @@ import Footer from './Components/Footer';
 import SingleProduct from './Components/SingleProduct';
 import AboutUs from './Components/AboutUs';
 import "bootstrap-icons/font/bootstrap-icons.min.css"
-import Sidebar from './Components/Sidebar';
-import { useState } from 'react';
 import Cart from './Components/Cart';
 
 
@@ -20,30 +18,13 @@ import Cart from './Components/Cart';
 
 function App() {
 
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-
-  // Toggle sidebar visibility
-  const toggleSidebar = () => {
-    setIsSidebarVisible(prevState => !prevState);
-  };
   return (
     <Router>
-      {/* Navbar with dropdown */}
-      <Navbar toggleSidebar={toggleSidebar} />
+     
+      <Navbar  />
 
-{/* Sidebar */}
-{isSidebarVisible && <Sidebar />}
-
-{/* Main content area */}
-       
     
-    <div className = "App">
-      <header className = "App-header">
-        SHOP ONLINE
-      </header>
-    </div>
-    
-    <div style={{ marginLeft: isSidebarVisible ? '250px' : '0', transition: 'margin-left 0.3s' }}>
+    <div >
         <Routes>
       <Route path ="/signup" element={<SignUp/>}/>
       <Route path='/signin' element = {<SignIn/>}/>

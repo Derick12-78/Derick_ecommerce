@@ -8,8 +8,8 @@ const AboutUs = () => {
 const [selectedVoice, setSelectedVoice] = useState(null);
 
 // "About Us" text as the predefined content
-const aboutUsText = `Shop Online is a e-commerce website that enables people to buy products and also sell products online.
-            Shop online is meant to prevent people from travelling costs and boreness of travelling to markets to buy and sell products.You can buy a product of your wish using Shop Online.
+const aboutUsText = `Soko Electrofurnitures is a e-commerce website that enables people to buy products and also sell products online.
+            Soko Electrofurnitures is meant to prevent people from travelling costs and boreness of travelling to markets to buy and sell products.You can buy a product of your wish using Soko Electrofurnitures.
             We sell a wide variety of products including electronics like phones ,iron kettles,inpods and many more .We also sell all types of furnitures.On pay our products are delivered to your home place thus minimising travelling expenses and also save on time.
 `;
 
@@ -56,7 +56,7 @@ const handleReadAloud = () => {
         </p>
           {/* Voice Selection */}
           <hr />
-      <div style={{ marginBottom: '20px' }}>
+      <div style={{ marginBottom: '20px' }} className="justify-content-center read">
         <label htmlFor="voiceSelect">Choose a voice: </label>
         <select
           id="voiceSelect"
@@ -73,7 +73,7 @@ const handleReadAloud = () => {
            {/* Button to trigger text-to-speech */}
       <button className="btn btn-dark text-light m-3"
         onClick={handleReadAloud}
-        style={{ padding: '10px 20px', fontSize: '16px', marginTop: '20px' }}
+        style={{ padding: '10px 20px', fontSize: '16px', marginTop: '20px' ,height:"40px"}}
       >Read aloud</button>
       </div>
 
@@ -83,7 +83,7 @@ const handleReadAloud = () => {
       <section className="row" style={{ marginBottom: '20px' ,display:"flex",justifyItems:"stretch"}}>
    
         <div className="card m-1 shadow justify-content-center">
-          <h2 className="text-center text-dark">Chatbot</h2>
+          <h4 className="text-center text-dark">Ask Anything</h4>
         <Chatbot/>
         </div>
         

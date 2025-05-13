@@ -2,10 +2,11 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './Components/SignUp';
 import SignIn from './Components/SignIn';
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap-icons/font/bootstrap-icons.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure Bootstrap CSS is included
+import 'bootstrap/dist/js/bootstrap.min.js'; 
 import AddProduct from './Components/AddProduct';
 import GetProducts from './Components/GetProducts';
-import "bootstrap/dist/js/bootstrap.min.js";
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import SingleProduct from './Components/SingleProduct';

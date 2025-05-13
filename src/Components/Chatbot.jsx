@@ -3,13 +3,11 @@ import React, { useState } from 'react';
 // Regular expressions and responses (pairs from your Python code)
 const pairs = [
   {
-    regex: /(.*)(Hi|Hello|Hey|Good morning|Evening)(.*)/i,
+    regex: /(.*)(Hi|Hello|Hey)(.*)/i,
     responses: [
       'Hi, how can I help you today?',
       'Hello, how can I help you today?',
-      'Hey, how can I help you today?',
-      'Good morning, how can I help you today?',
-      'Good evening, how can I help you today?'
+      'Hey, how can I help you today?'
     ]
   },
   {
@@ -117,7 +115,7 @@ const Chatbot = () => {
     <div style={{ width: '100%', margin: '0 auto', padding: '2px', backgroundColor: '#f9f9f9', borderRadius: '10px' }}>
       <div style={{  marginBottom: '10px', padding: '10px', backgroundColor: '#fff', borderRadius: '5px' }}>
         {messages.map((msg, index) => (
-          <div key={index} style={{textAlign: msg.sender === 'user' ? 'right' : 'left',backgroundColor:msg.sender === "user"? "gray" :"green",marginLeft:msg.sender ==="user"?"60%":"",borderRadius:msg.sender ==="user"?"10px":"10px",width:msg.sender ==="bot"? "40%":"40%" }} >
+          <div key={index} style={{textAlign: msg.sender === 'user' ? 'right' : 'left',backgroundColor:msg.sender === "user"? "gray" :"green",marginLeft:msg.sender ==="user"?"60%":"",marginRight:msg.sender ==="user"?"0%":"20%",borderRadius:msg.sender ==="user"?"10px":"10px",width:msg.sender ==="bot"? "40%":"40%" }}>
             <p><strong>{msg.sender}:</strong> {msg.text}{msg.time}</p>
           </div>
         ))}

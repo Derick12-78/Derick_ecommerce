@@ -8,8 +8,9 @@ const Navbar = () => {
    
   
    const handleLogout = ()=>{
-    localStorage.removeItem("user")
-    setNavItem("logout")
+    localStorage.removeItem("user");
+    localStorage.removeItem("cartItems");
+    setNavItem("logout");
    }
     return (  
 
@@ -29,7 +30,7 @@ const Navbar = () => {
                         <Link to ="/aboutus" className={navItem ==="about"?"active":"navbar-link"} onClick={()=>setNavItem("about")}>About Us</Link>
                         <div
                         className="cartCount">
-                        {cart >0 ?<span className="bg-danger text-center text-light cart">{cart}</span>:""}
+                        {cart > 0 && user?<span className="bg-danger text-center text-light cart">{cart}</span>:""}
                         <Link to="/cart" className = {navItem ==="cart"?"active":"navbar-link"} onClick={()=>setNavItem("cart")}>Cart</Link>
                         
                         </div>

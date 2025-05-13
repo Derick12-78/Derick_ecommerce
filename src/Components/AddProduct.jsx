@@ -65,7 +65,7 @@ try {
         <div className="row justify-content-center mt-4">
             
             <div className="col-md-6 card shadow p-4 bg-warning">
-                <h3 className="display-1">Add A Product <hr /></h3>
+                <h3 className="display-3">Add A New Product <hr /></h3>
                 <b className="text-warning">{loading}</b>
                 <b className="text-danger">{error}</b>
                 <b className="text-success">{success}</b>

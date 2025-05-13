@@ -27,7 +27,7 @@ const Footer = () => {
                     <a href="http://instagram.com/mwalimuderick" className="m-3" target="_black">
                         <img src="images/phone5.webp" alt=""/>
                     </a>
-                    <a href="http://wa.me/0759969163" target="_blank" className="m-3" rel="noreferrer">
+                    <a href="http://wa.me/+254759969163" target="_blank" className="m-3" rel="noreferrer">
                     <img src="images/375_Whatsapp_logo-64.webp" alt="" /></a>
                     
                 </div>
